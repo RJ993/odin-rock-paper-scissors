@@ -22,6 +22,7 @@ function getComputerChoice(){
     }else if (compResult === 2){
         console.log("scissors")
     }
+    return compResult
 }
 
 function getHumanChoice(){
@@ -30,19 +31,34 @@ function getHumanChoice(){
     if (humResult2 == "rock" || humResult2 == "paper" || humResult2 == "scissors"){
         console.log(humResult2)
     }else{
-        alert("Refresh the page!")
+        alert("Please refresh the page!")
     }
+    return humResult2
 }
 
+function playGame(){
 let humanScore = 0
 let computerScore = 0
 
-function playRound(humanChoice, computerChoice) {
-
+    function playRound(humanChoice, computerChoice) {
+    if ((humanChoice == "rock" && computerChoice === 2) || (humanChoice == "scissors" && computerChoice === 1) || (humanChoice == "paper" && computerChoice === 0)){
+        console.log("You win!")
+         humanScore++
+    }else if((humanChoice == "scissors" && computerChoice === 0) || (humanChoice == "rock" && computerChoice === 1) || (humanChoice == "paper" && computerChoice === 2)){
+        console.log("You lose...")
+         computerScore++
+    }else if((humanChoice == "scissors" && computerChoice === 2) || (humanChoice == "rock" && computerChoice === 0) || (humanChoice == "paper" && computerChoice === 1)){
+        console.log("Tie!")
+    }
   }
   
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
   
-  playRound(humanSelection, computerSelection);
-  
+        playRound(humanSelection, computerSelection);
+        
+}
+
+for (let i = 0; i < 5; i++){
+    playGame()
+}
