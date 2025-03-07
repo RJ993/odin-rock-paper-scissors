@@ -63,9 +63,9 @@ function playGame(){
         return humanScore && computerScore
 }
 
-for (let i = 0; i < 5; i++){
+/* for (let i = 0; i < 5; i++){
     playGame()
-}
+} */
 
 function declareWinner(){
     if (humanScore > computerScore){
