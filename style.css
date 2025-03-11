@@ -18,14 +18,15 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 
 h1{
     font-size: 100px;
     text-align: center;
     padding: 60px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+    background-color: rgba(0, 238, 255, 0.344);
 }
 
 button{
@@ -37,14 +38,22 @@ button{
 
 /* ID selectors */
 
-#container{
+.container{
     display: flex;
     flex-direction: column;
 }
 
-#buttons{
+.buttons{
     display: flex;
     gap: 50px;
     align-items: center;
     justify-content: center;
+}
+
+.press{
+    border-width: 4px;
+    border-style: solid;
+    border-color: green;
+    box-shadow: 0 0 10px green;
+    transition: 0.07s;
 }
