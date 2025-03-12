@@ -10,6 +10,52 @@ function getComputerChoice(){
 let humanScore = 0
 let computerScore = 0
 
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+const buttons = document.querySelectorAll("button")
+const humanSelection = ['rock', 'paper', 'scissors']
+const container = document.querySelector(".container")
+const buttonsClass = document.querySelector(".buttons")
+
+const scoreboard = document.createElement("div")
+scoreboard.classList.add("scoreboard")
+
+function rockPress(){
+    rock.classList.add("press")
+    playRound(humanSelection.at(0), getComputerChoice())
+    scoreboard.textContent = `You - ${humanScore}, Computer - ${computerScore}`
+    container.insertBefore(scoreboard, buttonsClass)
+    return humanScore && computerScore
+}
+
+function paperPress(){
+    paper.classList.add("press")
+    playRound(humanSelection.at(1), getComputerChoice())
+    scoreboard.textContent = `You - ${humanScore}, Computer - ${computerScore}`
+    container.insertBefore(scoreboard, buttonsClass)
+    return humanScore && computerScore
+}
+
+function scissorsPress(){
+    scissors.classList.add("press")
+    playRound(humanSelection.at(2), getComputerChoice())
+    scoreboard.textContent = `You - ${humanScore}, Computer - ${computerScore}`
+    container.insertBefore(scoreboard, buttonsClass)
+    return humanScore && computerScore
+}
+
+function declareWinner(){
+    if (humanScore > computerScore){
+        console.log("You win!")
+    }else if (humanScore < computerScore){
+        console.log("You lost...")
+    }
+    rock.removeEventListener("click", rockPress)
+    paper.removeEventListener("click", paperPress)
+    scissors.removeEventListener("click", scissorsPress)
+}
+
 function playRound(humanChoice, computerChoice) {
     if ((humanChoice == "rock" && computerChoice === 2) || (humanChoice == "scissors" && computerChoice === 1) || (humanChoice == "paper" && computerChoice === 0)){
         console.log("You win this round!")
@@ -23,37 +69,16 @@ function playRound(humanChoice, computerChoice) {
         computerScore += 0
 
     }
+    if(humanScore == 5 || computerScore == 5){
+        declareWinner()
+    }
     return humanScore && computerScore
   } 
-  
-    const humanSelection = ['rock', 'paper', 'scissors']
+        rock.addEventListener("click", rockPress)
 
-        const rock = document.querySelector("#rock")
-        const paper = document.querySelector("#paper")
-        const scissors = document.querySelector("#scissors")
-        const buttons = document.querySelectorAll("button")
+        paper.addEventListener("click", paperPress)
 
-
-
-
-        rock.addEventListener("click", function (e){
-            rock.classList.add("press")
-            playRound(humanSelection.at(0), getComputerChoice())
-            console.log("You - " + humanScore, "Computer - " + computerScore)
-            return humanScore && computerScore
-        })
-        paper.addEventListener("click", function (e){
-            paper.classList.add("press")
-            playRound(humanSelection.at(1), getComputerChoice())
-            console.log("You - " + humanScore, "Computer - " + computerScore)
-            return humanScore && computerScore
-        })
-        scissors.addEventListener("click", function (e){
-            scissors.classList.add("press")
-            playRound(humanSelection.at(2), getComputerChoice())
-            console.log("You - " + humanScore, "Computer - " + computerScore)
-            return humanScore && computerScore
-        })
+        scissors.addEventListener("click", scissorsPress)
 
         function removeTransition(e){
             if(e.propertyName !== 'box-shadow') return;
@@ -61,14 +86,3 @@ function playRound(humanChoice, computerChoice) {
         }
 
         buttons.forEach(button => button.addEventListener('transitionend', removeTransition))
-
-
-function declareWinner(){
-    if (humanScore > computerScore){
-        console.log("You win!")
-    }else if (humanScore < computerScore){
-        console.log("You lost...")
-    }
-}
-
-declareWinner()
