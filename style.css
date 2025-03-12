@@ -64,7 +64,7 @@ button:hover{
     box-shadow: 0 0 12px #803100;
 }
 
-.scoreboard, .roundWinner, .winner{
+.scoreboard, .roundWinner, .winner, .displayChoice{
     align-self: center;
     margin-bottom: 50px;
     font-size: 60px;
