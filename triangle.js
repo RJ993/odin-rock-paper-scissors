@@ -21,6 +21,12 @@ const buttonsClass = document.querySelector(".buttons")
 const scoreboard = document.createElement("div")
 scoreboard.classList.add("scoreboard")
 
+const roundWinner = document.createElement("div")
+roundWinner.classList.add("roundWinner")
+
+const winner = document.createElement("div")
+winner.classList.add("winner")
+
 function rockPress(){
     rock.classList.add("press")
     playRound(humanSelection.at(0), getComputerChoice())
@@ -47,9 +53,11 @@ function scissorsPress(){
 
 function declareWinner(){
     if (humanScore > computerScore){
-        console.log("You win!")
+        winner.textContent = "You win! Refresh the page for another game."
+        container.appendChild(winner)
     }else if (humanScore < computerScore){
-        console.log("You lost...")
+        winner.textContent = "You lost... Refresh the page for another game."
+        container.appendChild(winner)
     }
     rock.removeEventListener("click", rockPress)
     paper.removeEventListener("click", paperPress)
@@ -58,13 +66,16 @@ function declareWinner(){
 
 function playRound(humanChoice, computerChoice) {
     if ((humanChoice == "rock" && computerChoice === 2) || (humanChoice == "scissors" && computerChoice === 1) || (humanChoice == "paper" && computerChoice === 0)){
-        console.log("You win this round!")
+        roundWinner.textContent = "You win this round!"
+        container.appendChild(roundWinner)
         humanScore += 1
     }else if((humanChoice == "scissors" && computerChoice === 0) || (humanChoice == "rock" && computerChoice === 1) || (humanChoice == "paper" && computerChoice === 2)){
-        console.log("You lose this round...")
+        roundWinner.textContent = "You lose this round..."
+        container.appendChild(roundWinner)
         computerScore += 1
     }else if((humanChoice == "scissors" && computerChoice === 2) || (humanChoice == "rock" && computerChoice === 0) || (humanChoice == "paper" && computerChoice === 1)){
-        console.log("Round tied.")
+        roundWinner.textContent = "Round tied"
+        container.appendChild(roundWinner)
         humanScore += 0
         computerScore += 0
 

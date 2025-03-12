@@ -54,6 +54,7 @@ button:hover{
     gap: 50px;
     align-items: center;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .press{
@@ -63,7 +64,7 @@ button:hover{
     box-shadow: 0 0 12px #803100;
 }
 
-.scoreboard{
+.scoreboard, .roundWinner, .winner{
     align-self: center;
     margin-bottom: 50px;
     font-size: 60px;
