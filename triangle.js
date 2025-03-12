@@ -31,23 +31,37 @@ function playRound(humanChoice, computerChoice) {
         const rock = document.querySelector("#rock")
         const paper = document.querySelector("#paper")
         const scissors = document.querySelector("#scissors")
+        const buttons = document.querySelectorAll("button")
+
+
 
 
         rock.addEventListener("click", function (e){
+            rock.classList.add("press")
             playRound(humanSelection.at(0), getComputerChoice())
             console.log("You - " + humanScore, "Computer - " + computerScore)
             return humanScore && computerScore
         })
         paper.addEventListener("click", function (e){
+            paper.classList.add("press")
             playRound(humanSelection.at(1), getComputerChoice())
             console.log("You - " + humanScore, "Computer - " + computerScore)
             return humanScore && computerScore
         })
         scissors.addEventListener("click", function (e){
+            scissors.classList.add("press")
             playRound(humanSelection.at(2), getComputerChoice())
             console.log("You - " + humanScore, "Computer - " + computerScore)
             return humanScore && computerScore
         })
+
+        function removeTransition(e){
+            if(e.propertyName !== 'box-shadow') return;
+            this.classList.remove("press")
+        }
+
+        buttons.forEach(button => button.addEventListener('transitionend', removeTransition))
+
 
 function declareWinner(){
     if (humanScore > computerScore){
