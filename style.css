@@ -31,11 +31,15 @@ h1{
 
 button{
     font-size: 50px;
-    padding: 40px;
+    padding: 20px;
     background-color: black;
-    color: white;
     transition: all 0.15s;
     
+}
+
+img{
+    max-width: 200px;
+    height: auto;
 }
 
 button:hover{
